@@ -1,42 +1,17 @@
-type Author {
-    id : ID!
-    name : String!
-    nationality: String
-    books: [Book]
+type Query {
+    getBookById(id: ID!): Book
+    getAllBooks: [Book]
 }
 
 type Book {
     id: ID!
     title: String!
-    author: [Author]
-    publication : Publication
-        publishedYear: Int
-    isbn: String
+    author: Author
 }
 
-type Publication {
+type Author {
     id: ID!
-    name : String!
-    location: String
-    books: [Book]
-}
-
-type Query{
-    getBookById(id: ID!): Book
-    getAllBook: [Book]
-    getPublicationById(id: ID!): Publication
-    getAllPublication: [Publication]
-    getAuthorById(id: ID!): Author
-    getAllAuthor: [Author]
-}
-
-type Mutation{
-    addBook(title: String!, authorIds: [ID!]!, publicationId: ID!, publishedYear: Int, isbn: String): Book
-    addAuthor(name: String!, nationality: String): Author
-    addPublication(name: String!, locatkion: String): Publication
-}
-
-input PublicationRec{
     name: String!
-    location: String!
 }
+
+mutation
